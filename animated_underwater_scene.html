@@ -7,14 +7,82 @@
     <title>Underwater Animation</title>
     <style>
         body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            overflow: hidden;
             background: linear-gradient(to top, #0073e6, #b5d9ff); /* Gradient background from dark blue to light blue */
             height: 100vh; /* Set height of body to viewport height */
             display: flex;
             justify-content: center; /* Center horizontally */
             align-items: center; /* Center vertically */
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #f4f4f4;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            padding: 10px 20px;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+        }
+
+        /* Updated dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            z-index: 1;
+            margin-top: 10px; /* Adjusted margin-top */
+            left: 0; /* Adjusted left position */
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
         }
 
         canvas {
@@ -24,6 +92,40 @@
 </head>
 
 <body>
+    <header>
+        <h1>Your Data Science Portfolio</h1>
+    </header>
+
+    <nav>
+        <a href="#about">About</a>
+        <div class="dropdown">
+            <a href="#" class="dropbtn">JS Animations</a>
+            <div class="dropdown-content">
+                <a href="animated_underwater_scene.html" target="_blank">Underwater Scene</a>
+            </div>
+        </div>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Introduce yourself here, highlighting your background in data science, your skills, and your passion for the field.</p>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <p>Provide brief descriptions of your data science projects. Include links to any relevant GitHub repositories or deployed applications.</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>Provide contact information for potential employers or collaborators. You can include a contact form or direct email address.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Your Data Science Portfolio. All rights reserved.</p>
+    </footer>
+    
     <canvas id="myCanvas" width="800" height="400"></canvas>
 
     <script>
