@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Fish and Underwater Scene</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        canvas {
+            display: block;
+            margin: auto;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="400" height="400"></canvas>
+
+    <script>
+        var centerX = 200; // fish 
+        var centerY = 100;
+        var bodyLength = 118;
+        var bodyHeight = 74;
+        var bodyColor = "rgb(162, 0, 255)";
+        var fcolor = "rgb(0, 68, 255)";
+
+        var tailWidth = bodyLength / 4;
+        var tailHeight = bodyHeight / 2;
+
+        var finWidth = bodyLength / 4;
+        var finHeight = bodyHeight / 4;
+
+        var pebbleX = 56; // pebble 
+        var pebbleY = 50;
+        var pebbleW = 70;
+        var pebbleH = 50;
+
+        var bubbleX = 50; // bubble 
+        var bubbleY = 98;
+        var bubbleW = 50;
+        var bubbleH = 45;
+
+        var seaX = 50;
+        var seaY = 50;
+        var seaW = 50;
+        var seaH = 50;
+
+        var speed = 5;
+
+        var x2 = 50;
+        var w2 = 50;
+
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw sea bed
+            ctx.fillStyle = "rgb(81, 173, 196)";
+            ctx.fillRect(0, 354, canvas.width, canvas.height);
+
+            // Fish function
+            function fish(centerX, centerY, bodyLength, bodyHeight, fcolor, tailWidth, tailHeight) {
+                ctx.strokeStyle = "rgb(0, 0, 0)";
+                ctx.lineWidth = 0.2;
+                ctx.fillStyle = fcolor;
+                // body
+                ctx.beginPath();
+                ctx.ellipse(centerX, centerY, bodyLength / 2, bodyHeight / 2, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.stroke();
+                // tail
+                ctx.beginPath();
+                ctx.moveTo(centerX - bodyLength / 2, centerY);
+                ctx.lineTo(centerX - bodyLength / 2 - tailWidth, centerY - tailHeight);
+                ctx.lineTo(centerX - bodyLength / 2 - tailWidth, centerY + tailHeight);
+                ctx.closePath();
+                ctx.fill();
+                ctx.stroke();
+                // eye
+                ctx.fillStyle = "rgb(33, 33, 33)";
+                ctx.beginPath();
+                ctx.ellipse(centerX + bodyLength / 4, centerY, bodyHeight / 10, bodyHeight / 10, 0, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            // Rock function
+            function rock(pebbleX, pebbleY, pebbleW, pebbleH) {
+                ctx.fillStyle = "rgb(194, 194, 194)";
+                ctx.beginPath();
+                ctx.ellipse(pebbleX, pebbleY, pebbleW / 2, pebbleH / 2, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.fillStyle = "rgb(235, 235, 235)";
+                ctx.beginPath();
+                ctx.ellipse(pebbleX, pebbleY - 7, (pebbleW - 8) / 2, (pebbleH - 15) / 2, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.fillStyle = "rgb(247, 247, 247)";
+                ctx.beginPath();
+                ctx.ellipse(pebbleX - 1, pebbleY - 16, (pebbleW - 125) / 2, (pebbleH - 33) / 2, 0, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            // Bubble function
+            function bubble(bubbleX, bubbleY, bubbleW, bubbleH) {
+                ctx.fillStyle = "rgb(143, 208, 255)";
+                ctx.beginPath();
+                ctx.ellipse(bubbleX, bubbleY + 2, (bubbleW + 5) / 2, (bubbleH + 10) / 2, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.fillStyle = "rgb(107, 169, 214)";
+                ctx.beginPath();
+                ctx.ellipse(bubbleX, bubbleY + 3, bubbleW / 2, (bubbleH - 5) / 2, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.fillStyle = "rgb(184, 225, 255)";
+                ctx.beginPath();
+                ctx.ellipse(bubbleX, bubbleY, bubbleW / 2, bubbleH / 2, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.fillStyle = "rgb(255, 255, 255)";
+                ctx.beginPath();
+                ctx.ellipse(bubbleX + 7, bubbleY - 4, (bubbleW - 30) / 2, (bubbleH - 25) / 2, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.ellipse(bubbleX - 7, bubbleY + 13, (bubbleW - 44) / 2, (bubbleH - 43) / 2, 0, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            // Seaweed function
+            function seaweed(seaX, seaY, seaW, seaH) {
+                ctx.strokeStyle = "rgb(86, 191, 0)";
+                ctx.lineWidth = 7;
+                ctx.beginPath();
+                ctx.moveTo(seaX + 148, seaY + 381);
+                ctx.lineTo(seaX + 153, seaY + 221);
+                ctx.stroke();
+
+                ctx.fillStyle = "rgb(102, 227, 0)";
+                ctx.beginPath();
+                ctx.ellipse(seaX + 130, seaY + 242, (seaW - 9) / 2, (seaH - 30) / 2, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.ellipse(seaX + 174, seaY + 230, (seaW - 9) / 2, (seaH - 30) / 2, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.ellipse(seaX + 141, seaY + 280, (seaW - 32) / 2, (seaH - 39) / 2, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.ellipse(seaX + 167, seaY + 270, (seaW - 22) / 2, (seaH - 38) / 2, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.ellipse(seaX + 163, seaY + 297, (seaW - 31) / 2, (seaH - 39) / 2, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.ellipse(seaX + 141, seaY + 222, (seaW - 21) / 2, (seaH - 40) / 2, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.ellipse(seaX + 165, seaY + 315, (seaW - 27) / 2, (seaH - 46) / 2, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.ellipse(seaX + 131, seaY + 264, (seaW - 9) / 2, (seaH - 37) / 2, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.ellipse(seaX + 135, seaY + 310, (seaW - 21) / 2, (seaH - 37) / 2, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.ellipse(seaX + 169, seaY + 255, (seaW - 9) / 2, (seaH - 37) / 2, 0, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            // Draw seaweeds
+            seaweed(seaX, seaY, seaW, seaH);
+            seaweed(seaX - 193, seaY, seaW, seaH);
+            seaweed(seaX - 33, seaY + 69, seaW, seaH);
+            seaweed(seaX + 146, seaY - 21, seaW, seaH);
+            seaweed(seaX + 117, seaY + 35, seaW, seaH);
+
+            // Draw rocks
+            rock(85, 384, 81, 66);
+            rock(146, 383, 78, 50);
+            rock(97, 363, 78, 50);
+            rock(276, 372, 81, 66);
+            rock(25, 399, 81, 66);
+            rock(381, 376, 81, 48);
+            rock(228, 389, 81, 42);
+
+            // Draw bubbles
+            bubble(332, bubbleY + 350, 50, 50);
+            bubble(364, bubbleY + 450, 35, 33);
+            bubble(321, bubbleY + 176, 7, 7);
+            bubble(297, bubbleY + 800, 7, 7);
+            bubble(342, bubbleY + 200, 7, 7);
+
+            bubble(51, bubbleY + 700, 50, 50);
+            bubble(121, bubbleY + 399, 35, 33);
+            bubble(213, bubbleY + 400, 7, 7);
+            bubble(32, bubbleY + 176, 7, 7);
+            bubble(97, bubbleY + 155, 7, 7);
+
+            bubble(332, bubbleY + 506, 50, 50);
+            bubble(364, bubbleY + 580, 35, 33);
+            bubble(321, bubbleY + 318, 7, 7);
+            bubble(297, bubbleY + 967, 7, 7);
+            bubble(342, bubbleY + 355, 7, 7);
+
+            bubble(51, bubbleY + 892, 50, 50);
+            bubble(121, bubbleY + 592, 35, 33);
+            bubble(213, bubbleY + 591, 7, 7);
+            bubble(32, bubbleY + 357, 7, 7);
+            bubble(97, bubbleY + 298, 7, 7);
+
+            bubble(332, bubbleY + 712, 50, 50);
+            bubble(364, bubbleY + 681, 35, 33);
+            bubble(321, bubbleY + 510, 7, 7);
+            bubble(297, bubbleY + 1157, 7, 7);
+            bubble(342, bubbleY + 526, 7, 7);
+
+            bubble(51, bubbleY + 1005, 50, 50);
+            bubble(121, bubbleY + 726, 35, 33);
+            bubble(213, bubbleY + 874, 7, 7);
+            bubble(32, bubbleY + 661, 7, 7);
+            bubble(97, bubbleY + 612, 7, 7);
+
+            // Draw fishes
+            fish(centerX - 50, 50, bodyLength, 55, "rgb(204, 84, 84)", tailWidth * 1.2, tailHeight);
+            fish(centerX - 299, 333, bodyLength, 50, "rgb(0, 66, 171)", tailWidth * 0.5, tailHeight);
+            fish(centerX + 360, 193, bodyLength, 50, "rgb(0, 140, 114)", tailWidth * 1.4, tailHeight);
+
+            // Update variables for animation
+            centerX += speed;
+            bubbleY -= 3;
+
+            // Resetting animation when fish goes off screen
+            if (centerX > 700 || centerX < -300) {
+                speed *= -1;
+                bodyLength *= -1;
+            }
+
+            // Redraw after animation update
+            requestAnimationFrame(draw);
+        }
+
+        draw();
+    </script>
+</body>
+
+</html>
