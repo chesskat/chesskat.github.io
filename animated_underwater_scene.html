@@ -5,26 +5,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Underwater Animation</title>
-    <!-- Link to external CSS file -->
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* Additional styles for centering the canvas */
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-        }
-
-        canvas {
-            border: 1px solid black;
-        }
-    </style>
+    <!-- Link to external CSS file for general styles -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+    <header>
+        <h1>Your Data Science Portfolio</h1>
+    </header>
+
+    <nav>
+        <a href="#about">About</a>
+        <div class="dropdown">
+            <a href="#" class="dropbtn">JS Animations</a>
+            <div class="dropdown-content">
+                <a href="animated_underwater_scene.html" target="_blank">Underwater Scene</a>
+            </div>
+        </div>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Introduce yourself here, highlighting your background in data science, your skills, and your passion for the field.</p>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <p>Provide brief descriptions of your data science projects. Include links to any relevant GitHub repositories or deployed applications.</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>Provide contact information for potential employers or collaborators. You can include a contact form or direct email address.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Your Data Science Portfolio. All rights reserved.</p>
+    </footer>
+    
     <canvas id="myCanvas" width="800" height="400"></canvas>
     <script src="fishy-script.js"></script>
 </body>
