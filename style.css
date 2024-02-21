@@ -69,6 +69,12 @@ section {
   height: 100vh; /* Use the full height of the viewport */
 }
 
+.canvas-container canvas {
+  transform: scale(2); /* Scale up the canvas to twice its original size */
+  transform-origin: top left; /* Adjust as needed */
+}
+
+
 
 footer {
     background-color: #333;
