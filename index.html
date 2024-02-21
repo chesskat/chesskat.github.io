@@ -35,6 +35,29 @@
             background-color: #ddd;
         }
 
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
         section {
             padding: 20px;
         }
@@ -59,8 +82,12 @@
 
     <nav>
         <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="animated_underwater_scene.html" target="_blank">Underwater Scene</a>
+        <div class="dropdown">
+            <a href="#" class="dropbtn">JS Animations</a>
+            <div class="dropdown-content">
+                <a href="animated_underwater_scene.html" target="_blank">Underwater Scene</a>
+            </div>
+        </div>
         <a href="#contact">Contact</a>
     </nav>
 
