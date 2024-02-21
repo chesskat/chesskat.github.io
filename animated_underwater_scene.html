@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animated Fish and Underwater Scene</title>
+    <title>Underwater Animation</title>
     <style>
         body {
             margin: 0;
             padding: 0;
+            overflow: hidden;
         }
 
         canvas {
@@ -26,97 +27,95 @@
         var canvas = document.getElementById("myCanvas");
         var ctx = canvas.getContext("2d");
 
-        var centerX = canvas.width / 4; // Fish 
-        var centerY = canvas.height / 2; // Adjusted the initial Y coordinate
-        var bodyLength = canvas.width / 6;
-        var bodyHeight = canvas.height / 9;
-        var fcolor = "rgb(0, 68, 255)";
+        // Fish parameters
+        var fishes = [{
+                x: 100,
+                y: 200,
+                size: 40,
+                color: "rgb(255, 0, 0)", // Red
+                speed: 2
+            },
+            {
+                x: 300,
+                y: 150,
+                size: 60,
+                color: "rgb(0, 255, 0)", // Green
+                speed: 3
+            },
+            {
+                x: 500,
+                y: 250,
+                size: 50,
+                color: "rgb(0, 0, 255)", // Blue
+                speed: 1.5
+            }
+        ];
 
-        var tailWidth = bodyLength / 4;
-        var tailHeight = bodyHeight / 2;
-
-        var bubbleX = canvas.width / 8; // Bubble 
-        var bubbleY = canvas.height - 30; // Adjusted the initial Y coordinate
-        var bubbleW = canvas.width / 16;
-        var bubbleH = canvas.height / 18;
-
-        var speed = 2; // Adjusted fish speed
+        // Bubble parameters
+        var bubbles = [];
+        setInterval(function() {
+            bubbles.push({
+                x: Math.random() * canvas.width,
+                y: canvas.height,
+                radius: Math.random() * 10 + 5,
+                speed: Math.random() * 2 + 1
+            });
+        }, 1000);
 
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             // Draw sea bed
             ctx.fillStyle = "rgb(81, 173, 196)";
-            ctx.fillRect(0, canvas.height / 2, canvas.width, canvas.height / 2); // Adjusted sea bed position
+            ctx.fillRect(0, canvas.height / 2, canvas.width, canvas.height / 2);
 
-            // Fish function
-            function fish(centerX, centerY, bodyLength, bodyHeight, fcolor, tailWidth, tailHeight) {
-                ctx.strokeStyle = "rgb(0, 0, 0)";
-                ctx.lineWidth = 0.2;
-                ctx.fillStyle = fcolor;
-                // Body
-                ctx.beginPath();
-                ctx.ellipse(centerX, centerY, bodyLength / 2, bodyHeight / 2, 0, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.stroke();
-                // Tail
-                ctx.beginPath();
-                ctx.moveTo(centerX - bodyLength / 2, centerY);
-                ctx.lineTo(centerX - bodyLength / 2 - tailWidth, centerY - tailHeight);
-                ctx.lineTo(centerX - bodyLength / 2 - tailWidth, centerY + tailHeight);
-                ctx.closePath();
-                ctx.fill();
-                ctx.stroke();
-                // Eye
-                ctx.fillStyle = "rgb(33, 33, 33)";
-                ctx.beginPath();
-                ctx.ellipse(centerX + bodyLength / 4, centerY, bodyHeight / 10, bodyHeight / 10, 0, 0, Math.PI * 2);
-                ctx.fill();
-            }
+            // Draw seaweed
+            ctx.strokeStyle = "rgb(86, 191, 0)";
+            ctx.lineWidth = 7;
+            ctx.beginPath();
+            ctx.moveTo(canvas.width * 0.3, canvas.height);
+            ctx.lineTo(canvas.width * 0.3, canvas.height * 0.6);
+            ctx.stroke();
 
-            // Bubble function
-            function bubble(bubbleX, bubbleY, bubbleW, bubbleH) {
-                ctx.fillStyle = "rgb(143, 208, 255)";
-                ctx.beginPath();
-                ctx.ellipse(bubbleX, bubbleY, (bubbleW + 5) / 2, (bubbleH + 10) / 2, 0, 0, Math.PI * 2);
-                ctx.fill();
+            ctx.fillStyle = "rgb(102, 227, 0)";
+            ctx.beginPath();
+            ctx.arc(canvas.width * 0.3, canvas.height * 0.6 - 30, 20, 0, Math.PI * 2);
+            ctx.fill();
 
-                ctx.fillStyle = "rgb(107, 169, 214)";
-                ctx.beginPath();
-                ctx.ellipse(bubbleX, bubbleY, bubbleW / 2, (bubbleH - 5) / 2, 0, 0, Math.PI * 2);
-                ctx.fill();
-
-                ctx.fillStyle = "rgb(184, 225, 255)";
-                ctx.beginPath();
-                ctx.ellipse(bubbleX, bubbleY, bubbleW / 2, bubbleH / 2, 0, 0, Math.PI * 2);
-                ctx.fill();
-
-                ctx.fillStyle = "rgb(255, 255, 255)";
-                ctx.beginPath();
-                ctx.ellipse(bubbleX + 7, bubbleY - 4, (bubbleW - 30) / 2, (bubbleH - 25) / 2, 0, 0, Math.PI * 2);
-                ctx.fill();
-
-                ctx.beginPath();
-                ctx.ellipse(bubbleX - 7, bubbleY + 13, (bubbleW - 44) / 2, (bubbleH - 43) / 2, 0, 0, Math.PI * 2);
-                ctx.fill();
-            }
+            // Draw pebbles
+            ctx.fillStyle = "rgb(194, 194, 194)";
+            ctx.beginPath();
+            ctx.arc(canvas.width * 0.5, canvas.height * 0.8, 10, 0, Math.PI * 2);
+            ctx.fill();
 
             // Draw bubbles
-            bubble(canvas.width / 4, bubbleY, bubbleW, bubbleH);
-            bubble(canvas.width / 2, bubbleY, bubbleW * 0.7, bubbleH * 0.7);
-            bubble(canvas.width * 3 / 4, bubbleY, bubbleW * 0.15, bubbleH * 0.15);
-
-            // Draw fish
-            fish(centerX, centerY, bodyLength, bodyHeight, fcolor, tailWidth, tailHeight);
-            fish(canvas.width * 3 / 4, canvas.height * 3 / 4, bodyLength * 0.7, bodyHeight * 0.7, fcolor, tailWidth * 0.7, tailHeight * 0.7);
-            fish(canvas.width / 5, canvas.height * 3 / 5, bodyLength * 0.8, bodyHeight * 0.8, fcolor, tailWidth * 0.8, tailHeight * 0.8);
-
-            // Update fish position
-            if (centerX > canvas.width + 100 || centerX < -100) {
-                speed *= -1;
+            for (var i = 0; i < bubbles.length; i++) {
+                var bubble = bubbles[i];
+                ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+                ctx.beginPath();
+                ctx.arc(bubble.x, bubble.y, bubble.radius, 0, Math.PI * 2);
+                ctx.fill();
+                bubble.y -= bubble.speed;
+                if (bubble.y + bubble.radius < 0) {
+                    bubbles.splice(i, 1);
+                }
             }
-            centerX += speed;
-            bubbleY -= 1; // Adjusted bubble movement speed
+
+            // Draw fishes
+            fishes.forEach(function(fish) {
+                ctx.fillStyle = fish.color;
+                ctx.beginPath();
+                ctx.moveTo(fish.x, fish.y);
+                ctx.quadraticCurveTo(fish.x - fish.size * 0.5, fish.y + fish.size * 0.5, fish.x - fish.size * 2, fish.y);
+                ctx.lineTo(fish.x - fish.size * 2.5, fish.y - fish.size * 0.3);
+                ctx.lineTo(fish.x - fish.size * 2.5, fish.y + fish.size * 0.3);
+                ctx.closePath();
+                ctx.fill();
+                fish.x += fish.speed;
+                if (fish.x > canvas.width + fish.size * 2) {
+                    fish.x = -fish.size * 2;
+                }
+            });
 
             requestAnimationFrame(draw);
         }
