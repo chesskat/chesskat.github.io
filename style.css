@@ -62,6 +62,14 @@ section {
     padding: 20px;
 }
 
+.canvas-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Use the full height of the viewport */
+}
+
+
 footer {
     background-color: #333;
     color: #fff;
