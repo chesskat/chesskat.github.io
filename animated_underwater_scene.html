@@ -23,7 +23,7 @@
     <canvas id="myCanvas" width="800" height="400"></canvas>
 
     <script>
-        var centerX = 200; // fish 
+        var centerX = 200; // Fish 
         var centerY = 200; // Adjusted the initial Y coordinate
         var bodyLength = 118;
         var bodyHeight = 74;
@@ -33,12 +33,12 @@
         var tailWidth = bodyLength / 4;
         var tailHeight = bodyHeight / 2;
 
-        var pebbleX = 56; // pebble 
+        var pebbleX = 56; // Pebble 
         var pebbleY = 50;
         var pebbleW = 70;
         var pebbleH = 50;
 
-        var bubbleX = 50; // bubble 
+        var bubbleX = 50; // Bubble 
         var bubbleY = 398; // Adjusted the initial Y coordinate
         var bubbleW = 50;
         var bubbleH = 45;
@@ -65,12 +65,12 @@
                 ctx.strokeStyle = "rgb(0, 0, 0)";
                 ctx.lineWidth = 0.2;
                 ctx.fillStyle = fcolor;
-                // body
+                // Body
                 ctx.beginPath();
                 ctx.ellipse(centerX, centerY, bodyLength / 2, bodyHeight / 2, 0, 0, Math.PI * 2);
                 ctx.fill();
                 ctx.stroke();
-                // tail
+                // Tail
                 ctx.beginPath();
                 ctx.moveTo(centerX - bodyLength / 2, centerY);
                 ctx.lineTo(centerX - bodyLength / 2 - tailWidth, centerY - tailHeight);
@@ -78,7 +78,7 @@
                 ctx.closePath();
                 ctx.fill();
                 ctx.stroke();
-                // eye
+                // Eye
                 ctx.fillStyle = "rgb(33, 33, 33)";
                 ctx.beginPath();
                 ctx.ellipse(centerX + bodyLength / 4, centerY, bodyHeight / 10, bodyHeight / 10, 0, 0, Math.PI * 2);
