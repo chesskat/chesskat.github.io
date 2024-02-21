@@ -23,42 +23,31 @@
     <canvas id="myCanvas" width="800" height="400"></canvas>
 
     <script>
-        var centerX = 200; // Fish 
-        var centerY = 200; // Adjusted the initial Y coordinate
-        var bodyLength = 118;
-        var bodyHeight = 74;
-        var bodyColor = "rgb(162, 0, 255)";
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+
+        var centerX = canvas.width / 4; // Fish 
+        var centerY = canvas.height / 2; // Adjusted the initial Y coordinate
+        var bodyLength = canvas.width / 6;
+        var bodyHeight = canvas.height / 9;
         var fcolor = "rgb(0, 68, 255)";
 
         var tailWidth = bodyLength / 4;
         var tailHeight = bodyHeight / 2;
 
-        var pebbleX = 56; // Pebble 
-        var pebbleY = 50;
-        var pebbleW = 70;
-        var pebbleH = 50;
-
-        var bubbleX = 50; // Bubble 
-        var bubbleY = 398; // Adjusted the initial Y coordinate
-        var bubbleW = 50;
-        var bubbleH = 45;
-
-        var seaX = 50;
-        var seaY = 50;
-        var seaW = 50;
-        var seaH = 50;
+        var bubbleX = canvas.width / 8; // Bubble 
+        var bubbleY = canvas.height - 30; // Adjusted the initial Y coordinate
+        var bubbleW = canvas.width / 16;
+        var bubbleH = canvas.height / 18;
 
         var speed = 2; // Adjusted fish speed
-
-        var canvas = document.getElementById("myCanvas");
-        var ctx = canvas.getContext("2d");
 
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             // Draw sea bed
             ctx.fillStyle = "rgb(81, 173, 196)";
-            ctx.fillRect(0, 200, canvas.width, canvas.height); // Adjusted sea bed position
+            ctx.fillRect(0, canvas.height / 2, canvas.width, canvas.height / 2); // Adjusted sea bed position
 
             // Fish function
             function fish(centerX, centerY, bodyLength, bodyHeight, fcolor, tailWidth, tailHeight) {
@@ -113,16 +102,14 @@
             }
 
             // Draw bubbles
-            bubble(332, bubbleY, 50, 50);
-            bubble(364, bubbleY, 35, 33);
-            bubble(321, bubbleY, 7, 7);
-            bubble(297, bubbleY, 7, 7);
-            bubble(342, bubbleY, 7, 7);
+            bubble(canvas.width / 4, bubbleY, bubbleW, bubbleH);
+            bubble(canvas.width / 2, bubbleY, bubbleW * 0.7, bubbleH * 0.7);
+            bubble(canvas.width * 3 / 4, bubbleY, bubbleW * 0.15, bubbleH * 0.15);
 
             // Draw fish
-            fish(centerX - 50, 200, bodyLength, 55, "rgb(204, 84, 84)", tailWidth * 1.2, tailHeight);
-            fish(centerX - 299, 333, bodyLength, 50, "rgb(0, 66, 171)", tailWidth * 0.5, tailHeight);
-            fish(centerX + 360, 193, bodyLength, 50, "rgb(0, 140, 114)", tailWidth * 1.4, tailHeight);
+            fish(centerX, centerY, bodyLength, bodyHeight, fcolor, tailWidth, tailHeight);
+            fish(canvas.width * 3 / 4, canvas.height * 3 / 4, bodyLength * 0.7, bodyHeight * 0.7, fcolor, tailWidth * 0.7, tailHeight * 0.7);
+            fish(canvas.width / 5, canvas.height * 3 / 5, bodyLength * 0.8, bodyHeight * 0.8, fcolor, tailWidth * 0.8, tailHeight * 0.8);
 
             // Update fish position
             if (centerX > canvas.width + 100 || centerX < -100) {
