@@ -20,11 +20,11 @@
 </head>
 
 <body>
-    <canvas id="myCanvas" width="400" height="400"></canvas>
+    <canvas id="myCanvas" width="800" height="400"></canvas>
 
     <script>
         var centerX = 200; // fish 
-        var centerY = 100;
+        var centerY = 200; // Adjusted the initial Y coordinate
         var bodyLength = 118;
         var bodyHeight = 74;
         var bodyColor = "rgb(162, 0, 255)";
@@ -64,7 +64,7 @@
 
             // Draw sea bed
             ctx.fillStyle = "rgb(81, 173, 196)";
-            ctx.fillRect(0, 354, canvas.width, canvas.height);
+            ctx.fillRect(0, 200, canvas.width, canvas.height); // Adjusted sea bed position
 
             // Fish function
             function fish(centerX, centerY, bodyLength, bodyHeight, fcolor, tailWidth, tailHeight) {
@@ -240,22 +240,19 @@
             bubble(32, bubbleY + 661, 7, 7);
             bubble(97, bubbleY + 612, 7, 7);
 
-            // Draw fishes
-            fish(centerX - 50, 50, bodyLength, 55, "rgb(204, 84, 84)", tailWidth * 1.2, tailHeight);
+            // Draw fish
+            fish(centerX - 50, 200, bodyLength, 55, "rgb(204, 84, 84)", tailWidth * 1.2, tailHeight);
             fish(centerX - 299, 333, bodyLength, 50, "rgb(0, 66, 171)", tailWidth * 0.5, tailHeight);
             fish(centerX + 360, 193, bodyLength, 50, "rgb(0, 140, 114)", tailWidth * 1.4, tailHeight);
 
-            // Update variables for animation
-            centerX += speed;
-            bubbleY -= 3;
-
-            // Resetting animation when fish goes off screen
-            if (centerX > 700 || centerX < -300) {
+            // Update fish position
+            if (centerX > canvas.width + 100 || centerX < -100) {
                 speed *= -1;
                 bodyLength *= -1;
             }
+            centerX += speed;
+            bubbleY -= 3;
 
-            // Redraw after animation update
             requestAnimationFrame(draw);
         }
 
