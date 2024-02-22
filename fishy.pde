@@ -31,7 +31,6 @@ var speed = 5;
 var x2 = width * 0.125;
 var w2 = width * 0.125;
 
-...
 
 // Continue with the rest of your code here, adjusting variables and functions to use the new relative sizing
 
