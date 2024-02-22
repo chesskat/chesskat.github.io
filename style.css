@@ -69,6 +69,10 @@ section {
   height: 100vh; /* Use the full height of the viewport */
 }
 
+#myCanvas {
+    width: 800px;
+    height: 600px;
+}
 
 
 
