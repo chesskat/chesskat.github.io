@@ -38,7 +38,7 @@ var w2 = width * 0.125;
 
 
 
-draw = function() {
+var draw = function() {
  
 background(89, 216, 255);
 
