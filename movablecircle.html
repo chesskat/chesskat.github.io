@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Underwater Animation</title>
+    <!-- Link to external CSS file for general styles -->
+    <link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.6/processing.min.js"></script>
+
+    
+</head>
+
+<body>
+    <header>
+        <h1>Katarina Jones</h1>
+    </header>
+
+<div id="nav-container"></div>
+<script src="nav.js"></script>
+
+
+    
+<div class="canvas-container">
+    <canvas id="myCanvas"></canvas>
+                <script type="text/processing" data-processing-target="myCanvas">
+            
+                            void setup() {
+                                size(400, 400); // For Processing
+                            }
+    var x = 200; 
+    var y = 200; 
+    var sz = 200; 
+    
+    var current_weight = 2; 
+    var target_weight = 2; 
+
+    var current_alpha = 0; 
+    var target_alpha = 0; 
+    
+    
+draw = function (){ 
+    
+    
+    background(0, 0, 0);
+    if(dist(x, y, mouseX, mouseY) < sz / 2) {
+    cursor(HAND); 
+      if(mouseIsPressed) {
+        cursor(MOVE); 
+        x = lerp(x, mouseX, 0.2); 
+        y = lerp(y, mouseY, 0.2);
+        
+        target_weight = 5; 
+    } else{ 
+        target_weight = 2; 
+    
+    }
+    target_alpha = 255;  
+    } else {
+    
+    cursor(ARROW); 
+    target_alpha = 0;  
+    
+    } 
+    
+    current_alpha = lerp(current_alpha, target_alpha, 0.2);
+    
+    stroke(current_alpha);
+    
+    current_weight = lerp(current_weight, target_weight, 0.2); 
+    
+    strokeWeight(current_weight); 
+    
+    fill(0, 38, 255);
+    ellipse(x, y, sz, sz); 
+
+};                    
+            </script>
+</div>
+    <footer>
+        <p>&copy; 2024 Katarina's Portfolio. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
