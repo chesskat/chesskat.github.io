@@ -14,12 +14,14 @@ document.getElementById('nav-container').innerHTML = `
   <!-- <a href="movablecircle.html" >Clickable circle</a>
   		<a href="magic8ball.html" >Magic 8-Ball</a>
 		<a href="pong.html" >Pong game</a>
-
+ //--> 
             </div>
+
+     
         </div>
         <a href="mailto:katarinajojones@gmail.com">Contact</a> 
 	
- //--> 
+
     </nav>
 
 `;
