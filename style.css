@@ -4,6 +4,18 @@ html, body {
     margin: 0;
 }
 
+
+#processing {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f4f4f4;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -12,6 +24,57 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px; /* Adjust based on your layout preference */
+}
+
+.card {
+    background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card canvas {
+    width: 400px; /* or 100% if you want it to be responsive */
+    height: 400px;
+    /* Add any other styles that were applied to the original canvas */
+}
+
+
+.card-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-body p {
+    margin: 0;
+    padding-bottom: 20px;
+}
+
+button {
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+}
+
+
+
+
+
 
 header {
     background-color: #333;
