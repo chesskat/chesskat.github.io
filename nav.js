@@ -9,6 +9,7 @@ document.getElementById('nav-container').innerHTML = `
                 <a href="animated_underwater_scene.html" >Underwater Scene</a>
 		<a href="barns.html" >Barnsley Fern animation (The Coding Train Challenge #108)</a>
 		<a href="bouncingball.html" >Bouncing Ball loading screen</a>
+  		<a href="rain.html">Digital Rain</a>
 		
   
   <!-- <a href="movablecircle.html" >Clickable circle</a>
