@@ -10,6 +10,9 @@ header {
     color: #fff;
     padding: 20px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* This will push the footer down */
 }
 
 nav {
@@ -63,21 +66,16 @@ section {
 }
 
 .canvas-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Use the full height of the viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; /* Allows the container to grow and fill available space */
 }
-
-
-
 
 footer {
     background-color: #333;
     color: #fff;
     text-align: center;
     padding: 10px 0;
-    position: absolute;
-    bottom: 0;
     width: 100%;
 }
