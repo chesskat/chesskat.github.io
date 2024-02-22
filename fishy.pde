@@ -1,7 +1,12 @@
-var centerX = width * 0.5; // fish 
-var centerY = height * 0.25;
-var bodyLength = width * 0.295;
-var bodyHeight = height * 0.185;
+
+void setup() {
+    size(400, 400); // For Processing
+}
+
+var centerX = 200; // fish 
+var centerY = 100;
+var bodyLength = 118;
+var bodyHeight = 74;
 var bodyColor = color(162, 0, 255);
 var fcolor = color(0, 68, 255);
 
@@ -11,33 +16,29 @@ var tailHeight = bodyHeight/2;
 var finWidth = bodyLength/4;
 var finHeight = bodyHeight/4; 
 
-var pebbleX = width * 0.14; // pebble 
-var pebbleY = height * 0.125;
-var pebbleW = width * 0.175;
-var pebbleH = height * 0.125;
+var pebbleX = 56; // pebble 
+var pebbleY = 50;
+var pebbleW = 70;
+var pebbleH = 50;
 
-var bubbleX = width * 0.125; // bubble 
-var bubbleY = height * 0.245; 
-var bubbleW = width * 0.125;
-var bubbleH = height * 0.1125; 
+var bubbleX = 50; // bubble 
+var bubbleY = 98; 
+var bubbleW = 50;
+var bubbleH = 45; 
 
-var seaX = width * 0.125;
-var seaY = height * 0.125;
-var seaW = width * 0.125; 
-var seaH = height * 0.125;
+var seaX = 50;
+var seaY = 50;
+var seaW = 50; 
+var seaH = 50;
 
 var speed = 5;
 
-var x2 = width * 0.125;
-var w2 = width * 0.125;
-
-
-// Continue with the rest of your code here, adjusting variables and functions to use the new relative sizing
+var x2 = 50;
+var w2 = 50; 
 
 
 
-
-var draw = function() {
+draw = function() {
  
 background(89, 216, 255);
 
