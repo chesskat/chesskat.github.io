@@ -16,6 +16,16 @@ html, body {
     background: #f4f4f4;
 }
 
+#processingheader {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 300px;
+    justify-content: space-between;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
