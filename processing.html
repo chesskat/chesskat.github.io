@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Katarina's Processing.js Projects</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.6/processing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.6/processing.min.js"></script>
 </head>
 <body id="processing">
     <header>
@@ -15,7 +16,30 @@
 <div id="nav-container"></div>
 <script src="nav.js"></script>
 
+<div class ="body-content">
 <div class="container">
+
+
+ <div class="card">
+        <canvas id="canvas8"></canvas>
+        <div class="card-body">
+            <p>Click on canvas, then Press UP and DOWN to play!</p><button onclick="refreshSketch('canvas8')">Restart Game</button>
+
+        </div>
+    </div>
+
+<div class="card">
+        <canvas id="canvas9"></canvas>
+        <div class="card-body">
+            <p>Click on canvas, then press and hold the spacebar to jump!</p>
+<button onclick="refreshSketch('canvas9')">Restart Game</button>
+
+        </div>
+    </div>
+
+
+
+
     <!-- Card with Canvas 1 -->
     <div class="card">
         <canvas id="canvas1"></canvas>
@@ -31,7 +55,7 @@
     <div class="card">
         <canvas id="canvas2"></canvas>
         <div class="card-body">
-            <p>Clickable rain</p><button onclick="refreshSketch('canvas2')">Refresh Animation</button>
+            <p>Click to add more rain</p><button onclick="refreshSketch('canvas2')">Refresh Animation</button>
 
         </div>
     </div>
@@ -52,8 +76,34 @@
 
         </div>
     </div>
-</div>
 
+
+
+	    <div class="card">
+        <canvas id="canvas5"></canvas>
+        <div class="card-body">
+            <p>Fractal tree using recursion formulas</p><button onclick="refreshSketch('canvas5')">Refresh Animation</button>
+
+        </div>
+    </div>
+
+	    <div class="card">
+        <canvas id="canvas6"></canvas>
+        <div class="card-body">
+            <p>Click and drag around!</p><button onclick="refreshSketch('canvas6')">Refresh Animation</button>
+
+        </div>
+    </div>    <div class="card">
+        <canvas id="canvas7"></canvas>
+        <div class="card-body">
+            <p>Ask the 8-ball a question then click Refresh!</p><button onclick="refreshSketch('canvas7')">Refresh Animation</button>
+
+        </div>
+    </div>   
+
+
+</div>
+</div>
 
 <script type="text/processing" data-processing-target="canvas1">
       void setup() {
@@ -476,6 +526,384 @@ void resetSketch() {
 
 </script>
 
+
+
+	
+	<!-- --> 
+	<script type="text/processing" data-processing-target="canvas5">
+ void setup() {
+            size(400, 400);
+            noLoop();
+        }
+
+        float angle = 25;
+
+        void draw() {
+            background(0);
+            stroke(26, 0, 196);
+            strokeWeight(2);
+            translate(200, height);
+            branch(115);
+        }
+
+        void branch(float length) {
+            line(0, 0, 0, -length);
+            translate(0, -length);
+
+            if (length > 4) {
+                pushMatrix();
+                rotate(radians(angle));
+                branch(length * 0.67);
+                popMatrix();
+
+                pushMatrix();
+                rotate(radians(-angle));
+                branch(length * 0.67);
+                popMatrix();
+            }
+        }
+
+ </script>
+
+	<script type="text/processing" data-processing-target="canvas6">
+int x = 200; 
+int y = 200; 
+int sz = 200; 
+
+float current_weight = 2; 
+float target_weight = 2; 
+
+int current_alpha = 0; 
+int target_alpha = 0; 
+
+void setup() {
+    size(400, 400); // Define the canvas size
+    noCursor(); // Optionally hide the default cursor to fully control cursor appearance
+}
+
+void draw() { 
+    background(0);
+    if (dist(x, y, mouseX, mouseY) < sz / 2) {
+        cursor(HAND); 
+        if (mousePressed) {
+            cursor(MOVE); 
+            x = int(lerp(x, mouseX, 0.2)); 
+            y = int(lerp(y, mouseY, 0.2));
+            target_weight = 5; 
+        } else { 
+            target_weight = 2; 
+        }
+        target_alpha = 255;  
+    } else {
+        cursor(ARROW); 
+        target_alpha = 0;  
+    } 
+    
+    current_alpha = int(lerp(current_alpha, target_alpha, 0.2));
+    
+    stroke(255, 255, 255, current_alpha); // Ensure stroke() includes RGBA for alpha effect
+    
+    current_weight = lerp(current_weight, target_weight, 0.2); 
+    
+    strokeWeight(current_weight); 
+    
+    fill(0, 38, 255);
+    ellipse(x, y, sz, sz); 
+}
+
+
+ </script>
+
+	<script type="text/processing" data-processing-target="canvas7">
+int answer;
+
+void setup() {
+    size(400, 400); // Ensure the canvas is the right size
+    answer = int(random(1, 6)); // Randomize the answer once when the sketch starts
+    noLoop(); // Prevent draw() from looping
+}
+
+void draw() {
+    background(255); // Set a white background for clarity
+    
+    fill(0, 0, 0);
+    ellipse(200, 200, 375, 375);
+    fill(28, 28, 28);
+    ellipse(200, 200, 250, 250);
+    fill(60, 0, 255);
+    triangle(200, 104, 280, 280, 120, 280);
+
+    fill(255, 0, 0);
+    textSize(21);
+    text("Press refresh", 3, 26); 
+
+    fill(255, 255, 255);
+    textSize(28); // Set text size once since it's common for all
+    switch(answer) {
+        case 1:
+            text("VERY", 163, 211);
+            text("LIKELY", 156, 249);
+            break;
+        case 2:
+            text("YES", 172, 223);
+            break;
+        case 3:
+            text("NO", 180, 224);
+            break;
+        case 4:
+            text("MAYBE", 153, 239);
+            break;
+        case 5:
+            text("ASK", 174, 210);
+            text("AGAIN", 158, 245);
+            break;
+    }
+}
+
+
+ </script>
+
+	<script type="text/processing" data-processing-target="canvas8">
+int player1Y, player2Y, player1Score, player2Score;
+float ballX, ballY, ballSpeedX, ballSpeedY;
+final int PADDLE_WIDTH = 10, PADDLE_HEIGHT = 100, BALL_SIZE = 20;
+boolean upPressed = false;
+boolean downPressed = false;
+
+void setup() {
+  size(400, 400);
+  resetBall();
+  player1Y = player2Y = height / 2 - PADDLE_HEIGHT / 2;
+}
+
+void draw() {
+  background(0);
+  drawMiddleLine();
+  drawPlayers();
+updatePlayer1();
+  drawBall();
+  moveBall();
+  checkCollision();
+  drawScores();
+  autoMovePlayer2();
+}
+
+void keyPressed() {
+  if (keyCode == UP) upPressed = true;
+  if (keyCode == DOWN) downPressed = true;
+}
+
+void keyReleased() {
+  if (keyCode == UP) upPressed = false;
+  if (keyCode == DOWN) downPressed = false;
+}
+
+
+void updatePlayer1() {
+  if (upPressed) player1Y -= 3; // Smoother movement
+  if (downPressed) player1Y += 3; // Smoother movement
+  // Keep player within canvas bounds
+  player1Y = constrain(player1Y, 0, height - PADDLE_HEIGHT);
+}
+
+void autoMovePlayer2() {
+  if (ballY < player2Y + PADDLE_HEIGHT / 2) player2Y -= 3;
+  if (ballY > player2Y + PADDLE_HEIGHT / 2) player2Y += 3;
+}
+
+void resetBall() {
+  ballX = width / 2;
+  ballY = height / 2;
+  ballSpeedX = random(2) > 1 ? 3 : -3;
+  ballSpeedY = random(-3, 3);
+}
+
+void drawMiddleLine() {
+  stroke(255);
+  line(width / 2, 0, width / 2, height);
+}
+
+void drawPlayers() {
+  fill(255);
+  rect(5, player1Y, PADDLE_WIDTH, PADDLE_HEIGHT); // Player 1
+  rect(width - 5 - PADDLE_WIDTH, player2Y, PADDLE_WIDTH, PADDLE_HEIGHT); // Player 2
+}
+
+void drawBall() {
+  ellipse(ballX, ballY, BALL_SIZE, BALL_SIZE);
+}
+
+void moveBall() {
+  ballX += ballSpeedX;
+  ballY += ballSpeedY;
+  if (ballY < 0 || ballY > height) ballSpeedY *= -1; // Bounce off top and bottom walls
+  
+  // Score points
+  if (ballX < 0) {
+    player2Score++;
+    resetBall();
+  } else if (ballX > width) {
+    player1Score++;
+    resetBall();
+  }
+}
+
+void checkCollision() {
+  if (ballX < 15 + PADDLE_WIDTH && ballY > player1Y && ballY < player1Y + PADDLE_HEIGHT) ballSpeedX *= -1; // Player 1 paddle collision
+  if (ballX > width - 15 - PADDLE_WIDTH - BALL_SIZE && ballY > player2Y && ballY < player2Y + PADDLE_HEIGHT) ballSpeedX *= -1; // Player 2 paddle collision
+}
+
+
+
+void drawScores() {
+  fill(255);
+  textSize(16);
+  text("Player 1: " + player1Score, 10, 20);
+  text("Player 2: " + player2Score, width - 100, 20);
+}
+
+
+ </script>
+
+<!-- TESTING --> 
+
+<script type="text/processing" data-processing-target="canvas9">
+PImage imgHopperHappy, imgHopperJumping;
+boolean upPressed = false;
+float x = 200, y = 300;
+ArrayList<Float> grassXs = new ArrayList<Float>();
+ArrayList<Stick> sticks = new ArrayList<Stick>();
+Beaver beaver;
+
+void setup() {
+  size(400, 400);
+  imgHopperHappy = loadImage("Hopper-Happy.png");
+  imgHopperJumping = loadImage("Hopper-Jumping.png");
+  loadGrass();
+  createSticks();
+  beaver = new Beaver(x, y);
+}
+
+void draw() {
+  background(227, 254, 255);
+  drawGrass();
+  updateBeaver();
+  updateSticks();
+  drawScore();
+}
+
+
+
+void drawGrass() {
+  for (int i = 0; i < grassXs.size(); i++) {
+    image(loadImage("grassImage.png"), grassXs.get(i), height * 0.85, 20, 20);
+    grassXs.set(i, grassXs.get(i) - 1);
+    if (grassXs.get(i) <= -20) {
+      grassXs.set(i, (float) width);
+    }
+  }
+}
+
+void loadGrass() {
+  for (int i = 0; i < 25; i++) {
+    grassXs.add(i * 20.0);
+  }
+}
+void createSticks() {
+  for (int i = 0; i < 40; i++) {
+    sticks.add(new Stick(i * 40 + 300, random(20, 260)));
+  }
+}
+
+void updateBeaver() {
+  if (upPressed) {
+    beaver.hop();
+  } else {
+    beaver.fall();
+  }
+  beaver.draw();
+}
+
+void updateSticks() {
+  for (Stick stick : sticks) {
+    stick.draw();
+    beaver.checkForStickGrab(stick);
+    stick.x -= 1;
+  }
+}
+
+void drawScore() {
+  textSize(18);
+  text("Score: " + beaver.sticks, 20, 30);
+  if ((float)beaver.sticks / sticks.size() >= 0.95) {
+    textSize(36);
+    text("YOU WIN!!!!", 100, 200);
+  }
+}
+
+void keyPressed() {
+  if (key == ' ') upPressed = true;
+}
+
+void keyReleased() {
+  if (key == ' ') upPressed = false;
+}
+
+class Beaver {
+  float x, y;
+  int sticks = 0;
+
+  Beaver(float x, float y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  void draw() {
+    fill(255, 0, 0);
+    this.y = constrain(this.y, 0, height-50);
+    image(upPressed ? imgHopperJumping : imgHopperHappy, this.x, this.y, 40, 40);
+  }
+
+  void hop() {
+    this.y -= 5;
+  }
+
+  void fall() {
+    this.y += 5;
+  }
+
+  void checkForStickGrab(Stick stick) {
+    if ((stick.x >= this.x && stick.x <= (this.x + 40)) &&
+        (stick.y >= this.y && stick.y <= (this.y + 40))) {
+        stick.y = -400;
+        this.sticks++;
+    }
+  }
+}
+
+class Stick {
+  float x, y;
+
+  Stick(float x, float y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  void draw() {
+    fill(89, 71, 0);
+    rectMode(CENTER);
+    rect(this.x, this.y, 5, 40);
+  }
+}
+
+</script>
+
+	<!-- --> 
+
+
+
+
+	
 <script type="text/javascript">
   function refreshSketch(canvasId) {
     // Find the card container that holds the canvas and the card body
