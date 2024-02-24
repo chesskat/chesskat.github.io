@@ -4,6 +4,12 @@ html, body {
     margin: 0;
 }
 
+img {
+    width: 300px; /* Set the desired width */
+    height: auto; /* Maintain aspect ratio */
+}
+
+
 
 #processing {
     font-family: 'Arial', sans-serif;
@@ -51,9 +57,11 @@ body {
     align-items: center;
 }
 
+
+
 .card canvas {
-    width: 400px; /* or 100% if you want it to be responsive */
-    height: 400px;
+    width: 100%; /* or 100% if you want it to be responsive */
+    height: 100%;
     /* Add any other styles that were applied to the original canvas */
 }
 
