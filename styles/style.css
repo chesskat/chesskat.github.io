@@ -61,6 +61,8 @@ body {
 
 .card canvas {
     width: 100%; /* or 100% if you want it to be responsive */
+    max-width: 400px; /* Set a maximum width for the container */
+    max-height: 400px;
     height: 100%;
     /* Add any other styles that were applied to the original canvas */
 }
