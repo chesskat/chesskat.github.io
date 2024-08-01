@@ -103,6 +103,12 @@ header {
     justify-content: space-between; /* This will push the footer down */
 }
 
+
+
+
+
+
+
 nav {
   background-color: #f4f4f4;
   padding: 10px 0;
@@ -151,6 +157,17 @@ nav a:hover {
 
 .dropdown-submenu {
   position: relative;
+  padding: 0;
+  border: none;
+}
+
+.dropdown-submenu a {
+  padding: 12px 16px;
+  display: block;
+}
+
+.dropdown-submenu:hover > a {
+  background-color: #f1f1f1;
 }
 
 .dropdown-submenu-content {
@@ -163,9 +180,14 @@ nav a:hover {
   left: 100%;
 }
 
-.dropdown-submenu:hover .dropdown-submenu-content {
+.dropdown-submenu:hover > .dropdown-submenu-content {
   display: block;
 }
+
+
+
+
+
 section {
     padding: 20px;
 }
