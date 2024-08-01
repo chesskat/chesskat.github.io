@@ -14,7 +14,7 @@ document.getElementById('nav-container').innerHTML = `
         <a href="../../../../../../../../skills/chess.html">Chess</a>
       </div>
     </div>
-          <a href="../../../../../../../../Blog/index.html">Blog</a>
+          <a href="../../../../../../../../blog/index.html">Blog</a>
     <a href="mailto:katarinajojones@gmail.com">Contact</a>
   </nav>
 `;
