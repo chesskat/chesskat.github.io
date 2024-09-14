@@ -1,0 +1,365 @@
+/* Reset Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+}
+
+/* Navigation Styles */
+nav {
+    width: 100%;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #eaeaea;
+}
+
+nav .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em 2em;
+}
+
+nav .logo a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #333;
+    text-decoration: none;
+}
+
+nav .nav-links {
+    list-style: none;
+    display: flex;
+}
+
+nav .nav-links li {
+    margin-left: 2em;
+}
+
+nav .nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+nav .nav-links a:hover,
+nav .nav-links a.active {
+    color: #007BFF;
+}
+
+/* Hamburger Menu (Mobile) */
+nav .hamburger {
+    display: none;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+/* Hero Section Styles */
+header {
+    height: 100vh;
+    background: url('hero-background.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+header .hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+header h1 {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+}
+
+header h1 span {
+    color: #007BFF;
+}
+
+header p {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+}
+
+header .btn {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 0.75em 1.5em;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+header .btn:hover {
+    background-color: #0056b3;
+}
+
+/* About Section Styles */
+#about {
+    padding: 5em 0;
+    background-color: #f9f9f9;
+}
+
+#about .container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#about .about-content {
+    flex: 1;
+    padding: 1em;
+}
+
+#about .about-content h2 {
+    font-size: 2em;
+    margin-bottom: 1em;
+}
+
+#about .about-content p {
+    margin-bottom: 1.5em;
+    line-height: 1.6;
+}
+
+#about .about-content .btn {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 0.75em 1.5em;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#about .about-content .btn:hover {
+    background-color: #0056b3;
+}
+
+#about .about-image {
+    flex: 1;
+    padding: 1em;
+}
+
+#about .about-image img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Portfolio Section Styles */
+#portfolio {
+    padding: 5em 0;
+}
+
+#portfolio .container {
+    text-align: center;
+}
+
+#portfolio h2 {
+    font-size: 2em;
+    margin-bottom: 2em;
+}
+
+.portfolio-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.portfolio-item {
+    flex: 1 1 calc(33.333% - 1em);
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio-item img {
+    width: 100%;
+    display: block;
+    transition: transform 0.3s;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.1);
+}
+
+.portfolio-info {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 123, 255, 0.8);
+    color: #fff;
+    width: 100%;
+    padding: 1em;
+    transform: translateY(100%);
+    transition: transform 0.3s;
+}
+
+.portfolio-item:hover .portfolio-info {
+    transform: translateY(0);
+}
+
+/* Contact Section Styles */
+#contact {
+    padding: 5em 0;
+    background-color: #f9f9f9;
+}
+
+#contact .container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#contact h2 {
+    font-size: 2em;
+    margin-bottom: 2em;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 1.5em;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.form-group label {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    background-color: #f9f9f9;
+    padding: 0 0.25em;
+    color: #999;
+    transition: all 0.3s;
+    pointer-events: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #007BFF;
+}
+
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group textarea:focus + label,
+.form-group textarea:not(:placeholder-shown) + label {
+    top: -0.5em;
+    left: 0.75em;
+    font-size: 0.75em;
+    color: #007BFF;
+    background-color: #fff;
+}
+
+.contact-form .btn {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 0.75em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-form .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 2em 0;
+}
+
+footer .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+footer p {
+    margin: 0;
+}
+
+.social-links {
+    display: flex;
+}
+
+.social-links a {
+    color: #fff;
+    margin-left: 1em;
+    font-size: 1.2em;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #007BFF;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    nav .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #fff;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 200px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    nav .nav-links li {
+        margin: 0;
+    }
+
+    nav .nav-links a {
+        padding: 1em;
+        display: block;
+    }
+
+    nav .hamburger {
+        display: block;
+    }
+
+    #about .container,
+    #portfolio .container {
+        flex-direction: column;
+    }
+
+    .portfolio-item {
+        flex: 1 1 100%;
+    }
+}
