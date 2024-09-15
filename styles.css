@@ -68,7 +68,7 @@ nav .hamburger {
 /* Hero Section Styles */
 header {
     height: 100vh;
-    background: url('hero-background.jpg') center/cover no-repeat;
+    background: url('pictures/logobanner.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
