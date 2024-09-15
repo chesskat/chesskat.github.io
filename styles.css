@@ -313,19 +313,35 @@ footer p {
     margin: 0;
 }
 
+/* Social Links Styles */
 .social-links {
     display: flex;
+    align-items: center;
 }
 
 .social-links a {
     color: #fff;
     margin-left: 1em;
-    font-size: 1.2em;
+    font-size: 1.5em;
     transition: color 0.3s;
 }
 
+.social-links a:first-child {
+    margin-left: 0;
+}
+
 .social-links a:hover {
-    color: #007BFF;
+    color: #d2b48c; /* Tan color on hover */
+}
+
+.social-links .social-icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+
+.social-links i {
+    font-size: 1.5em;
 }
 
 /* Responsive Styles */
